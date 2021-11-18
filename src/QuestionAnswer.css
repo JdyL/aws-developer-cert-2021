@@ -1,0 +1,18 @@
+h1 {
+  padding-bottom: 2vh;
+}
+
+p {
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.choices {
+  cursor: pointer;
+  padding: 20px;
+}
+
+.choices:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
