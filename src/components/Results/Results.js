@@ -14,7 +14,8 @@ export const Results = ({ data, finalAnswers }) => {
               index={index + 1}
               question={data[index].question}
               choices={data[index].choices}
-              correctAnswer={ans}
+              userAnswer={[ans]}
+              correctAnswer={data[index].answer}
               showResult
             />
           );
