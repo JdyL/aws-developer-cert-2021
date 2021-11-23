@@ -1,0 +1,13 @@
+.ScoreBtn {
+  background-color: rgba(28, 81, 255, 1);
+  border-radius: 2px;
+  font-size: 1.125rem;
+  border: none;
+  padding: 20px 50px;
+  color: white;
+  cursor: pointer;
+}
+
+.ScoreBtn:hover {
+  background-color: rgb(7, 53, 202);
+}

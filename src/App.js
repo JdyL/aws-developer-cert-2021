@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "./App.css";
-import QuestionAnswer from "./QuestionAnswer";
+import { QuestionAnswer } from "./components/QuestionAnswer";
 import { data } from "./data";
+import { Results } from "./components/Results";
+import { GetScore } from "./components/GetScore";
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,12 +29,11 @@ function App() {
               });
               setCurrentIndex((prevState) => (prevState += 1));
             }}
-            showResult={() => {
-              console.log("Result");
-            }}
           />
         ) : (
-          <div>Finished!</div>
+          <div>
+            <Results data={data} finalAnswers={answers} />
+          </div>
         )}
         <p
           style={{
@@ -43,6 +44,11 @@ function App() {
             paddingRight: 10,
           }}
         >{`${currentIndex + 1}/${data.length}`}</p>
+        <GetScore
+          data={data}
+          finalAnswers={answers}
+          style={{ position: "absolute", top: 0, right: 0 }}
+        />
       </div>
     </div>
   );
