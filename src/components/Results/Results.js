@@ -39,7 +39,7 @@ export const Results = ({ data, finalAnswers }) => {
       <div>
         <h2
           style={{ border: "1px solid cyan", padding: 10 }}
-        >{`You scored: ${score} / ${total} (${percent}%)`}</h2>
+        >{`You scored: ${score} / ${total} (${percent || 0}%)`}</h2>
         {percent > 72 ? (
           <p style={{ color: "lime" }}>You passed!</p>
         ) : (
