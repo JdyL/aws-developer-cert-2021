@@ -1,6 +1,7 @@
 import React from "react";
 import { QuestionAnswer } from "../QuestionAnswer";
 import "./Results.css";
+import { isEqual } from "lodash";
 
 export const Results = ({ data, finalAnswers }) => {
   console.log(data, finalAnswers);
@@ -14,7 +15,7 @@ export const Results = ({ data, finalAnswers }) => {
               index={index + 1}
               question={data[index].question}
               choices={data[index].choices}
-              userAnswer={[ans]}
+              userAnswer={ans}
               correctAnswer={data[index].answer}
               showResult
             />
@@ -23,8 +24,37 @@ export const Results = ({ data, finalAnswers }) => {
       </div>
     );
   };
+
+  const Score = () => {
+    const finalAnswersArr = Object.entries(finalAnswers);
+    let score = 0;
+    const total = finalAnswersArr?.length;
+    finalAnswersArr.forEach(([key, val]) => {
+      if (isEqual(data[key].answer, val)) {
+        score++;
+      }
+    });
+    const percent = Math.floor((score / total) * 100);
+    return (
+      <div>
+        <h2
+          style={{ border: "1px solid cyan", padding: 10 }}
+        >{`You scored: ${score} / ${total} (${percent}%)`}</h2>
+        {percent > 72 ? (
+          <p style={{ color: "lime" }}>You passed!</p>
+        ) : (
+          <>
+            <p style={{ color: "red" }}>You need atleast 72% to pass </p>
+            You failed :(
+          </>
+        )}
+      </div>
+    );
+  };
   return (
     <div className="Results">
+      <Score />
+
       <QA />
     </div>
   );

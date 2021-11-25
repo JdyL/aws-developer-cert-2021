@@ -26,10 +26,12 @@ p {
   border: 3px rgb(97, 255, 150) solid;
   border-radius: 4px;
   box-sizing: border-box;
+  padding: 17px;
 }
 
 .-incorrect {
   border: 3px rgb(255, 97, 97) solid;
   border-radius: 4px;
   box-sizing: border-box;
+  padding: 17px;
 }

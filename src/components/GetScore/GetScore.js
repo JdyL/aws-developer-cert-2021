@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./GetScore.css";
 import { Results } from "../Results";
+import { Button } from "../Button";
 
 export const GetScore = ({ className, style, data, finalAnswers }) => {
   const [showModal, setShowModal] = useState(false);
@@ -37,13 +38,11 @@ export const GetScore = ({ className, style, data, finalAnswers }) => {
           ></div>
         </>
       )}
-      <button
-        className={`ScoreBtn ${className}`}
+      <Button
+        text="Check results"
         style={style}
         onClick={() => setShowModal((prevState) => !prevState)}
-      >
-        Check results
-      </button>
+      />
     </>
   );
 };

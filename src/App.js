@@ -23,12 +23,13 @@ function App() {
             index={currentIndex + 1}
             question={currentQuestionData.question}
             choices={currentQuestionData.choices}
+            userAnswer={answers?.[currentIndex]}
             setAnswer={(ans) => {
               setAnswers((prevState) => {
                 return { ...prevState, [currentIndex]: ans };
               });
-              setCurrentIndex((prevState) => (prevState += 1));
             }}
+            clickNext={() => setCurrentIndex((prevState) => (prevState += 1))}
           />
         ) : (
           <div>
