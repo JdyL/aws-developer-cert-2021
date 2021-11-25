@@ -28,7 +28,7 @@ const QuestionAnswer = ({
   };
   return (
     <div>
-      <h1 style={{ display: "flex" }}>
+      <h1 style={{ display: "flex", textAlign: "left" }}>
         {`${index}. ${question}`}{" "}
         {showResult &&
           (isEqual(usersAnswer.sort(), correctAnswer.sort()) ? (
