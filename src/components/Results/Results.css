@@ -6,3 +6,24 @@
   overflow: auto;
   padding: 30px;
 }
+
+.Settings {
+  padding: 20px 0px;
+  margin: 0 auto;
+  max-width: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.FilterBtn {
+  padding: 10px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin: 0 20px;
+}
+.-selected {
+  border-bottom: 5px solid white;
+}

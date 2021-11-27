@@ -19,7 +19,7 @@ export const formatTime = (seconds) => {
 };
 
 export const formatChoiceLetter = (string, index) => {
-  const letters = ["A.", "B.", "C.", "D."];
+  const letters = ["A.", "B.", "C.", "D.", "E."];
   const hasOption = letters.find((letter) => {
     return string.substring(0, 2) === letter;
   });

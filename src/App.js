@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import { QuestionAnswer } from "./components/QuestionAnswer";
 import { data as originalData } from "./data";
@@ -16,9 +16,14 @@ function App() {
   const [shuffleCount, setShuffleCount] = useState(0);
   const [timer, setTimer] = useState(0);
   const currentQuestionData = data[currentIndex];
+  const [amountOfQuestions, setAmountOfQuestions] = useState(data.length);
+  const timerInterval = useRef();
+  const amountOfQuestionsOptions = [5, 10, 25, 50, 100, data.length];
 
   const isFinished = () => {
-    return currentIndex + 1 > data.length;
+    const finished = currentIndex + 1 > data.length;
+    if (finished) clearInterval(timerInterval.current);
+    return finished;
   };
 
   const shuffleData = () => {
@@ -34,14 +39,17 @@ function App() {
 
   useEffect(() => {
     if (start) {
-      setInterval(() => setTimer((prevState) => (prevState += 1)), 1000);
+      timerInterval.current = setInterval(
+        () => setTimer((prevState) => (prevState += 1)),
+        1000
+      );
     }
   }, [start]);
 
   return (
     <div className="App">
       <div className="Content">
-        {start && (
+        {start && !isFinished() && (
           <div className="Timer">Time elapsed: {formatTime(timer)}</div>
         )}
         {!start ? (
@@ -50,6 +58,36 @@ function App() {
             <p style={{ paddingTop: 10, paddingBottom: 20, fontWeight: 300 }}>
               I got these question and answers from examtopics + checked the
               discussion for false answers
+            </p>
+            <p>
+              Questions:{" "}
+              <input
+                name="Questions Amount"
+                value={amountOfQuestions}
+                className="QuestionInput"
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (
+                    (/^[0-9\b]+$/.test(value) &&
+                      value <= data.length &&
+                      value > 0) ||
+                    value === ""
+                  )
+                    setAmountOfQuestions(e.target.value);
+                }}
+              />
+              / {data.length}
+              <div className="QuestionBtnContainer">
+                {amountOfQuestionsOptions.map((val) => (
+                  <button
+                    className="QuestionBtn"
+                    onClick={() => setAmountOfQuestions(val)}
+                    key={val}
+                  >
+                    {val === data.length ? "All" : val}
+                  </button>
+                ))}
+              </div>
             </p>
             <div
               style={{
@@ -60,7 +98,13 @@ function App() {
                 backgroundColor: "grey",
               }}
             ></div>
-            <Button text="Start" onClick={() => setStart(true)} />
+            <Button
+              text="Start"
+              onClick={() => {
+                setStart(true);
+                setData(data.slice(0, amountOfQuestions));
+              }}
+            />
             <Button
               text={`${
                 shuffleCount ? `Shuffled x${shuffleCount}` : "Shuffle?"

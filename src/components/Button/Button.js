@@ -1,10 +1,10 @@
 import React from "react";
 import "./Button.css";
 
-const Button = ({ text, style, onClick, disabled }) => {
+const Button = ({ text, style, onClick, disabled, className }) => {
   return (
     <div
-      className={`Button ${disabled && "-disabled"}`}
+      className={`Button ${className} ${disabled && "-disabled"}`}
       style={style}
       onClick={!disabled ? onClick : null}
     >

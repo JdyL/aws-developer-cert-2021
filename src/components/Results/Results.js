@@ -1,26 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import { QuestionAnswer } from "../QuestionAnswer";
 import "./Results.css";
 import { isEqual } from "lodash";
+import { Button } from "../Button";
 
-export const Results = ({ data, finalAnswers }) => {
-  console.log(data, finalAnswers);
+export const Results = ({ data, finalAnswers: originalFinalAnswers }) => {
+  const [finalAnswers, setFinalAnswers] = useState(originalFinalAnswers);
+  const [filter, setFilter] = useState("Show All");
   const QA = () => {
+    return Object.values(finalAnswers).map((ans, index) => (
+      <div style={{ paddingBottom: 70 }} key={index}>
+        <QuestionAnswer
+          key={index + 1}
+          index={index + 1}
+          question={data[index].question}
+          choices={data[index].choices}
+          userAnswer={ans}
+          correctAnswer={data[index].answer}
+          showResult
+        />
+      </div>
+    ));
+  };
+
+  const filterBtns = {
+    "Show All": {
+      onClick: () => {
+        setFinalAnswers(originalFinalAnswers);
+      },
+    },
+    "Show Correct": {
+      style: { backgroundColor: "green" },
+      onClick: () => {
+        setFinalAnswers(
+          Object.entries(originalFinalAnswers).reduce((acc, [key, val]) => {
+            if (isEqual(val, data[key].answer)) {
+              acc[key] = val;
+            }
+            return acc;
+          }, {})
+        );
+      },
+    },
+    "Show Incorrect": {
+      style: { backgroundColor: "red" },
+      onClick: () => {
+        setFinalAnswers(
+          Object.entries(originalFinalAnswers).reduce((acc, [key, val]) => {
+            if (!isEqual(val, data[key].answer)) {
+              acc[key] = val;
+            }
+            return acc;
+          }, {})
+        );
+      },
+    },
+  };
+
+  const Settings = () => {
     return (
-      <div>
-        {Object.values(finalAnswers).map((ans, index) => {
+      <div className="Settings">
+        {Object.entries(filterBtns).map(([key, val]) => {
           return (
-            <div style={{ paddingBottom: 70 }}>
-              <QuestionAnswer
-                key={index + 1}
-                index={index + 1}
-                question={data[index].question}
-                choices={data[index].choices}
-                userAnswer={ans}
-                correctAnswer={data[index].answer}
-                showResult
-              />
-            </div>
+            <Button
+              text={key}
+              className={`FilterBtn ${filter === key ? "-selected" : ""}`}
+              onClick={() => {
+                setFilter(key);
+                val.onClick();
+              }}
+              style={val.style}
+            />
           );
         })}
       </div>
@@ -56,7 +106,7 @@ export const Results = ({ data, finalAnswers }) => {
   return (
     <div className="Results">
       <Score />
-
+      <Settings />
       <QA />
     </div>
   );

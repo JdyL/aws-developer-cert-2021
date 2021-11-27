@@ -402,7 +402,7 @@ export const data = [
       "A corporation uses Amazon API Gateway and the API Gateway native API key validation to maintain a REST service. Users can now join up for the service through a new registration website that was recently developed by the corporation. The registration page uses CreateApiKey to generate a new API key and sends it to the user. The user receives a 403 Forbidden error when attempting to call the API with this key. Existing API users are unaffected and can continue to utilize it.\nWhat changes to the code will allow these additional users to access the API?",
     choices: [
       "A. The createDeployment method must be called so the API can be redeployed to include the newly created API key.",
-      "B. The updateAuthorizer method must be called to update the APIג€™s authorizer to include the newly created API key.",
+      "B. The updateAuthorizer method must be called to update the API's authorizer to include the newly created API key.",
       "C. The importApiKeys method must be called to import all newly created API keys into the current stage of the API.",
       "D. The createUsagePlanKey method must be called to associate the newly created API key with the correct usage plan.",
     ],
@@ -708,7 +708,7 @@ export const data = [
     choices: [
       "A. The change was not made in the master branch of the AWS CodeCommit repository.",
       "B. One of the earlier stages in the pipeline failed and the pipeline has terminated.",
-      "C. One of the Amazon EC2 instances in the companyג€™s AWS CodePipeline cluster is inactive.",
+      "C. One of the Amazon EC2 instances in the company's AWS CodePipeline cluster is inactive.",
       "D. The AWS CodePipeline is incorrectly configured and is not executing AWS CodeDeploy.",
       "E. AWS CodePipeline does not have permissions to access AWS CodeCommit.",
     ],
@@ -733,7 +733,7 @@ export const data = [
       "There are two categories of members on a video-hosting website: those who pay a charge and those who do not. Each video upload creates a message in Amazon Simple Queue Service (SQS). Each video is processed by a fleet of Amazon EC2 instances that poll Amazon SQS.\nThe developer must guarantee that the developer processes the films submitted by paying users first.\n\nHow is the developer to achieve this criterion?",
     choices: [
       "A. Create two SQS queues; one for paying members, and one for non-paying members. Poll the paying member queue first and then poll the non-paying member queue.",
-      "B. Use SQS to set priorities on individual items within a single queue; give the paying membersג€™ videos the highest priority.",
+      "B. Use SQS to set priorities on individual items within a single queue; give the paying members' videos the highest priority.",
       "C. Use SQS to set priorities on individual items within a single queue and use Amazon SNS to encode the videos.",
       "D. Create two Amazon SNS topics: one for paying members and one for non-paying members. Use SNS topic subscription priorities to differentiate between the two types of members.",
     ],
@@ -795,13 +795,13 @@ export const data = [
     question:
       "A developer will handle AWS services through the AWS CLI on a local development server.\n\nWhat can be done to guarantee that the CLI executes commands using the Developer's IAM permissions?",
     choices: [
-      "A. Specify the Developerג€™s IAM access key ID and secret access key as parameters for each CLI command.",
-      "B. Run the aws configure CLI command, and provide the Developerג€™s IAM access key ID and secret access key.",
-      "C. Specify the Developerג€™s IAM user name and password as parameters for each CLI command.",
-      "D. Use the Developerג€™s IAM role when making the CLI command.",
+      "A. Specify the Developer's IAM access key ID and secret access key as parameters for each CLI command.",
+      "B. Run the aws configure CLI command, and provide the Developer's IAM access key ID and secret access key.",
+      "C. Specify the Developer's IAM user name and password as parameters for each CLI command.",
+      "D. Use the Developer's IAM role when making the CLI command.",
     ],
     answer: [
-      "B. Run the aws configure CLI command, and provide the Developerג€™s IAM access key ID and secret access key.",
+      "B. Run the aws configure CLI command, and provide the Developer's IAM access key ID and secret access key.",
     ],
   },
   {
@@ -810,7 +810,7 @@ export const data = [
     choices: [
       "A. Write a script that deletes old records; schedule the scripts as a cron job on an Amazon EC2 instance.",
       "B. Add an attribute with the expiration time; enable the Time To Live feature based on that attribute.",
-      "C. Each day, create a new table to hold session data; delete the previous dayג€™s table.",
+      "C. Each day, create a new table to hold session data; delete the previous day's table.",
       "D. Add an attribute with the expiration time; name the attribute ItemExpiration.",
     ],
     answer: [
@@ -1180,11 +1180,11 @@ export const data = [
     choices: [
       "A. Manually reduce the concurrent execution limit at the account level",
       "B. Add another API Gateway stage for /MyAPI, and shard the requests",
-      "C. Configure the second Lambda functionג€™s concurrency execution limit",
+      "C. Configure the second Lambda function's concurrency execution limit",
       "D. Reduce the throttling limits in the API Gateway /MyAPI endpoint",
     ],
     answer: [
-      "C. Configure the second Lambda functionג€™s concurrency execution limit",
+      "C. Configure the second Lambda function's concurrency execution limit",
     ],
   },
   {
