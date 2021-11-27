@@ -7,6 +7,7 @@ Todo:
 - retry btn at end and after start with prompt
 - use local storage
 - remove unused
+- fix that one question with images
 
 ------
 
