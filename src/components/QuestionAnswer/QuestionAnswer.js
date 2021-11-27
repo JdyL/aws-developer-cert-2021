@@ -40,7 +40,11 @@ const QuestionAnswer = ({
       >
         {`${index}. ${question}`}{" "}
         {questionImage && (
-          <img src={questionImage} alt="Question" style={{ paddingTop: 20 }} />
+          <img
+            src={questionImage}
+            alt="Question"
+            style={{ paddingTop: 20, width: "50%", height: "auto" }}
+          />
         )}
         {showResult &&
           (isEqual(usersAnswer.sort(), correctAnswer.sort()) ? (
