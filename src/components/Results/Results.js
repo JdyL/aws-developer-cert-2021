@@ -7,18 +7,20 @@ export const Results = ({ data, finalAnswers }) => {
   console.log(data, finalAnswers);
   const QA = () => {
     return (
-      <div className="">
+      <div>
         {Object.values(finalAnswers).map((ans, index) => {
           return (
-            <QuestionAnswer
-              key={index + 1}
-              index={index + 1}
-              question={data[index].question}
-              choices={data[index].choices}
-              userAnswer={ans}
-              correctAnswer={data[index].answer}
-              showResult
-            />
+            <div style={{ paddingBottom: 70 }}>
+              <QuestionAnswer
+                key={index + 1}
+                index={index + 1}
+                question={data[index].question}
+                choices={data[index].choices}
+                userAnswer={ans}
+                correctAnswer={data[index].answer}
+                showResult
+              />
+            </div>
           );
         })}
       </div>

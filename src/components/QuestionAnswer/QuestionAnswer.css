@@ -1,5 +1,5 @@
 h1 {
-  padding-bottom: 2vh;
+  margin-bottom: 0;
 }
 
 p {
@@ -11,6 +11,7 @@ p {
   cursor: pointer;
   padding: 20px;
   text-align: left;
+  font-weight: 300;
 }
 
 .choices:hover {

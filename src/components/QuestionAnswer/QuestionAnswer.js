@@ -16,7 +16,6 @@ const QuestionAnswer = ({
   clickNext = () => {},
 }) => {
   const [usersAnswer, setUsersAnswer] = useState(showResult ? userAnswer : []);
-  console.log(usersAnswer, correctAnswer);
   const checkIsAnswer = (val) => {
     if (correctAnswer?.includes(val)) {
       return "-correct";
@@ -28,7 +27,15 @@ const QuestionAnswer = ({
   };
   return (
     <div>
-      <h1 style={{ display: "flex", textAlign: "left" }}>
+      <h1
+        style={{
+          display: "flex",
+          textAlign: "left",
+          paddingBottom: !showResult ? 30 : 0,
+          fontWeight: 400,
+          justifyContent: "space-between",
+        }}
+      >
         {`${index}. ${question}`}{" "}
         {showResult &&
           (isEqual(usersAnswer.sort(), correctAnswer.sort()) ? (

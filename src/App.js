@@ -31,6 +31,10 @@ function App() {
         {!start ? (
           <>
             <h1>Welcome to AWS Developer Associate practice Exam</h1>
+            <p style={{ paddingBottom: 20 }}>
+              I got these question and answers from examtopics + checked the
+              discussion for false answers
+            </p>
             <p style={{ paddingBottom: 20 }}>Click start to begin</p>
             <Button text="Start" onClick={() => setStart(true)} />
             <Button
