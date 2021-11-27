@@ -18,6 +18,7 @@ export const Results = ({ data, finalAnswers: originalFinalAnswers }) => {
           userAnswer={ans}
           correctAnswer={data[index].answer}
           showResult
+          questionImage={data[index]?.imageUrl}
         />
       </div>
     ));

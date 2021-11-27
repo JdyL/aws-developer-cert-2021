@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import "./QuestionAnswer.css";
 import { Button } from "../Button";
 import { getIndexes, letters } from "../../utils";
@@ -26,19 +26,39 @@ const QuestionAnswer = ({
     }
     return "";
   };
+  const Choice = useCallback(({ text }) => {
+    if (text.includes("https://www.examtopics.com/assets/")) {
+      return (
+        <img
+          src={text.substring(2)}
+          alt="answer"
+          style={{ width: "20%", height: "auto" }}
+        />
+      );
+    }
+    return text;
+  }, []);
   return (
     <div>
-      <h1
-        style={{
-          display: "flex",
-          flexDirection: questionImage ? "column" : "row",
-          textAlign: "left",
-          paddingBottom: !showResult ? 30 : 0,
-          fontWeight: 400,
-          justifyContent: "space-between",
-        }}
-      >
-        {`${index}. ${question}`}{" "}
+      <div style={{ paddingBottom: !showResult ? 30 : 0 }}>
+        <h1
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            textAlign: "left",
+            fontWeight: 400,
+            justifyContent: "space-between",
+          }}
+        >
+          {`${index}. ${question}`}{" "}
+          {showResult &&
+            (isEqual(usersAnswer.sort(), correctAnswer.sort()) ? (
+              <Tick colour="lime" />
+            ) : (
+              <Cross colour="red" />
+            ))}
+        </h1>
+
         {questionImage && (
           <img
             src={questionImage}
@@ -46,13 +66,7 @@ const QuestionAnswer = ({
             style={{ paddingTop: 20, width: "50%", height: "auto" }}
           />
         )}
-        {showResult &&
-          (isEqual(usersAnswer.sort(), correctAnswer.sort()) ? (
-            <Tick colour="lime" />
-          ) : (
-            <Cross colour="red" />
-          ))}
-      </h1>
+      </div>
 
       {showResult && (
         <div style={{ color: "grey", padding: "1rem 0" }}>
@@ -98,13 +112,13 @@ const QuestionAnswer = ({
               : null
           }
         >
-          {letters[index] + " " + val}
+          <Choice text={letters[index] + " " + val} />
         </p>
       ))}
       {!showResult && (
         <Button
           text="Next"
-          style={{ marginTop: 40 }}
+          style={{ marginTop: 40, marginBottom: 20 }}
           onClick={() => {
             clickNext();
             setAnswer(usersAnswer);
