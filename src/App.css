@@ -16,3 +16,9 @@
 h1 {
   font-size: 1.5rem;
 }
+
+.Timer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { QuestionAnswer } from "./components/QuestionAnswer";
 import { data as originalData } from "./data";
@@ -6,6 +6,7 @@ import { Results } from "./components/Results";
 import { GetScore } from "./components/GetScore";
 import { shuffle } from "lodash";
 import { Button } from "./components/Button";
+import { formatTime } from "./utils";
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -13,7 +14,7 @@ function App() {
   const [data, setData] = useState(originalData);
   const [start, setStart] = useState(false);
   const [shuffleCount, setShuffleCount] = useState(0);
-
+  const [timer, setTimer] = useState(0);
   const currentQuestionData = data[currentIndex];
 
   const isFinished = () => {
@@ -25,9 +26,18 @@ function App() {
     setData(shuffle(data));
   };
 
+  useEffect(() => {
+    if (start) {
+      setInterval(() => setTimer((prevState) => (prevState += 1)), 1000);
+    }
+  }, [start]);
+
   return (
     <div className="App">
       <div className="Content">
+        {start && (
+          <div className="Timer">Time elapsed: {formatTime(timer)}</div>
+        )}
         {!start ? (
           <>
             <h1>Welcome to AWS Developer Associate practice Exam</h1>
