@@ -4,14 +4,24 @@ import { QuestionAnswer } from "./components/QuestionAnswer";
 import { data as originalData } from "./data";
 import { Results } from "./components/Results";
 import { GetScore } from "./components/GetScore";
-import { shuffle } from "lodash";
+import { shuffle, cloneDeep } from "lodash";
 import { Button } from "./components/Button";
 import { formatTime, formatChoiceLetter } from "./utils";
+
+
+const initialiseData = (data) => {
+  const newData = cloneDeep(data);
+  newData.forEach((val) => {
+    val.choices = val?.choices?.map((choice) => formatChoiceLetter(choice));
+    val.answer = val?.answer?.map((ans) => formatChoiceLetter(ans));
+  });
+  return newData;
+};
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
-  const [data, setData] = useState(originalData);
+  const [data, setData] = useState(initialiseData(originalData));
   const [start, setStart] = useState(false);
   const [shuffleCount, setShuffleCount] = useState(0);
   const [timer, setTimer] = useState(0);
@@ -47,7 +57,10 @@ function App() {
   }, [start]);
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{ alignItems: isFinished() ? "flex-start" : "center" }}
+    >
       <div className="Content">
         {start && !isFinished() && (
           <div className="Timer">Time elapsed: {formatTime(timer)}</div>
@@ -80,7 +93,9 @@ function App() {
               <div className="QuestionBtnContainer">
                 {amountOfQuestionsOptions.map((val) => (
                   <button
-                    className="QuestionBtn"
+                    className={`QuestionBtn ${
+                      val === amountOfQuestions ? "-highlight" : ""
+                    }`}
                     onClick={() => setAmountOfQuestions(val)}
                     key={val}
                   >
@@ -119,10 +134,12 @@ function App() {
         ) : (
           <>
             {!isFinished() ? (
+              <>
               <QuestionAnswer
                 index={currentIndex + 1}
                 question={currentQuestionData.question}
                 choices={currentQuestionData.choices}
+                  questionImage={currentQuestionData?.imageUrl}
                 userAnswer={answers?.[currentIndex]}
                 setAnswer={(ans) => {
                   setAnswers((prevState) => {
@@ -133,11 +150,11 @@ function App() {
                   setCurrentIndex((prevState) => (prevState += 1))
                 }
               />
-            ) : (
-              <div>
-                <Results data={data} finalAnswers={answers} />
-              </div>
-            )}
+                <GetScore
+                  data={data}
+                  finalAnswers={answers}
+                  style={{ position: "absolute", top: 0, right: 0 }}
+                />
             <p
               style={{
                 position: "absolute",
@@ -147,11 +164,10 @@ function App() {
                 paddingRight: 10,
               }}
             >{`${currentIndex + 1}/${data.length}`}</p>
-            <GetScore
-              data={data}
-              finalAnswers={answers}
-              style={{ position: "absolute", top: 0, right: 0 }}
-            />
+              </>
+            ) : (
+              <Results data={data} finalAnswers={answers} />
+            )}
           </>
         )}
       </div>

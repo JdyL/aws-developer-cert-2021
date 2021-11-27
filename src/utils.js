@@ -18,14 +18,16 @@ export const formatTime = (seconds) => {
   return `${hours}h ${minute}m ${seconds % 60}s`;
 };
 
+export const letters = ["A.", "B.", "C.", "D.", "E."];
+
 export const formatChoiceLetter = (string, index) => {
-  const letters = ["A.", "B.", "C.", "D.", "E."];
   const hasOption = letters.find((letter) => {
     return string.substring(0, 2) === letter;
   });
 
   if (hasOption) {
-    return `${letters?.[index] + " " || ""}${string.substring(2)}`;
+    if (index !== undefined) return letters?.[index] + string.substring(2);
+    return string.substring(3);
   }
   return string;
 };

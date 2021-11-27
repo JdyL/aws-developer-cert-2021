@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./QuestionAnswer.css";
 import { Button } from "../Button";
-import { getIndexes } from "../../utils";
+import { getIndexes, letters } from "../../utils";
 import { Tick, Cross } from "../../assets";
 import { isEqual } from "lodash";
 
@@ -14,6 +14,7 @@ const QuestionAnswer = ({
   userAnswer,
   showResult,
   clickNext = () => {},
+  questionImage,
 }) => {
   const [usersAnswer, setUsersAnswer] = useState(showResult ? userAnswer : []);
   const checkIsAnswer = (val) => {
@@ -30,6 +31,7 @@ const QuestionAnswer = ({
       <h1
         style={{
           display: "flex",
+          flexDirection: questionImage ? "column" : "row",
           textAlign: "left",
           paddingBottom: !showResult ? 30 : 0,
           fontWeight: 400,
@@ -37,6 +39,9 @@ const QuestionAnswer = ({
         }}
       >
         {`${index}. ${question}`}{" "}
+        {questionImage && (
+          <img src={questionImage} alt="Question" style={{ paddingTop: 20 }} />
+        )}
         {showResult &&
           (isEqual(usersAnswer.sort(), correctAnswer.sort()) ? (
             <Tick colour="lime" />
@@ -65,7 +70,7 @@ const QuestionAnswer = ({
           )}
         </div>
       )}
-      {choices.map((val) => (
+      {choices.map((val, index) => (
         <p
           key={val}
           className={`choices ${showResult ? checkIsAnswer(val) : ""} ${
@@ -89,7 +94,7 @@ const QuestionAnswer = ({
               : null
           }
         >
-          {val}
+          {letters[index] + " " + val}
         </p>
       ))}
       {!showResult && (
