@@ -6,6 +6,7 @@ Todo:
 - use scss and refactor
 - retry btn at end and after start with prompt
 - use local storage
+- remove unused
 
 ------
 
