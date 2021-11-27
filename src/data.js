@@ -1,4 +1,20 @@
-// Next todo is: https://www.examtopics.com/exams/amazon/aws-certified-developer-associate/view/22/
+import img0000300001 from "./assets/img/0000300001.png";
+import img0000600001 from "./assets/img/0000600001.png";
+import img0001000001 from "./assets/img/0001000001.png";
+import img0002800001 from "./assets/img/0002800001.png";
+import img0005900001 from "./assets/img/0005900001.jpg";
+import img0006200001 from "./assets/img/0006200001.png";
+import img0008400001 from "./assets/img/0008400001.png";
+import img0009400001 from "./assets/img/0009400001.png";
+import img0010400001 from "./assets/img/0010400001.png";
+import img0014600001 from "./assets/img/0014600001.png";
+import img0014700001 from "./assets/img/0014700001.png";
+import img0014700002 from "./assets/img/0014700002.png";
+import img0014700003 from "./assets/img/0014700003.png";
+import img0014800001 from "./assets/img/0014800001.png";
+import img0014900001 from "./assets/img/0014900001.png";
+import img0016900001 from "./assets/img/0016900001.png";
+import img0017600001 from "./assets/img/0017600001.jpg";
 
 export const data = [
   {
@@ -178,8 +194,7 @@ export const data = [
     answer: [
       "B. Implement an exponential backoff algorithm for optimizing the number of API requests made to Amazon EC2.",
     ],
-    imageUrl:
-      "https://www.examtopics.com/assets/media/exam-media/03756/0014900001.png",
+    imageUrl: img0014900001,
   },
 
   {
@@ -909,8 +924,7 @@ export const data = [
       "A. Contact AWS Support to request an AWS KMS rate limit increase.",
       "B. Perform error retries with exponential backoff in the application code.",
     ],
-    imageUrl:
-      "https://www.examtopics.com/assets/media/exam-media/03756/0010400001.png",
+    imageUrl: img0010400001,
   },
   {
     question:
@@ -1046,8 +1060,7 @@ export const data = [
     answer: [
       "B. Create a global secondary index with a partition key of sport_name and a sort key of score, and get the results",
     ],
-    imageUrl:
-      "https://www.examtopics.com/assets/media/exam-media/03756/0006200001.png",
+    imageUrl: img0006200001,
   },
   {
     question:
@@ -1339,8 +1352,7 @@ export const data = [
       "D. ג€codecommit:*ג€",
     ],
     answer: ["C. ג€codecommit:Update*ג€"],
-    imageUrl:
-      "https://www.examtopics.com/assets/media/exam-media/03756/0009400001.png",
+    imageUrl: img0009400001,
   },
   {
     question:
@@ -1522,8 +1534,7 @@ export const data = [
     answer: [
       "D. The IAM user needs an associated policy with read access to demoman-table.",
     ],
-    imageUrl:
-      "https://www.examtopics.com/assets/media/exam-media/03756/0017600001.jpg",
+    imageUrl: img0017600001,
   },
   {
     question:
@@ -1637,8 +1648,7 @@ export const data = [
       "D. Change the namespace of the option settings to a custom namespace.",
     ],
     answer: ["B. Rename the file to a .config extension."],
-    imageUrl:
-      "https://www.examtopics.com/assets/media/exam-media/03756/0008400001.png",
+    imageUrl: img0008400001,
   },
   {
     question:
@@ -1933,8 +1943,7 @@ export const data = [
       "A developer is hard at work on a project that would store hundreds of millions of product reviews in an Amazon DynamoDB database. The records include the following data elements:\n\n\nWhich field would provide the MOST consistent performance when used as the partition key in DynamoDB?",
     choices: ["A. starRating", "B. reviewID", "C. comment", "D. productID"],
     answer: ["D. productID"],
-    imageUrl:
-      "https://www.examtopics.com/assets/media/exam-media/03756/0000300001.png",
+    imageUrl: img0000300001,
   },
 
   {
@@ -1949,8 +1958,7 @@ export const data = [
     answer: [
       "C. Move the database connection and close statement out of the handler. Place the connection in the global space.",
     ],
-    imageUrl:
-      "https://www.examtopics.com/assets/media/exam-media/03756/0000600001.png",
+    imageUrl: img0000600001,
   },
   {
     question:
@@ -2039,21 +2047,18 @@ export const data = [
     answer: [
       "B. Use the AWS STS decode-authorization-message API to decode the message.",
     ],
-    imageUrl:
-      "https://www.examtopics.com/assets/media/exam-media/03756/0002800001.png",
+    imageUrl: img0002800001,
   },
   {
     question:
       "A gaming application saves player scores in an Amazon DynamoDB database with the following four columns: user id, user name, user score, and user rank. Users are only permitted to edit their names. Web identity federation authenticates a user.\n\nWhich set of criteria should be put to the dynamodb: PutItem API call's policy associated with the role?\nA.\n\nB.\n\nC.\n\nD.",
     choices: [
-      "A. https://www.examtopics.com/assets/media/exam-media/03756/0014600001.png",
-      "B. https://www.examtopics.com/assets/media/exam-media/03756/0014700001.png",
-      "C. https://www.examtopics.com/assets/media/exam-media/03756/0014700002.png",
-      "D. https://www.examtopics.com/assets/media/exam-media/03756/0014700003.png",
+      `A. ${img0014600001}`,
+      `B. ${img0014700001}`,
+      `C. ${img0014700002}`,
+      `D. ${img0014700003}`,
     ],
-    answer: [
-      "C. https://www.examtopics.com/assets/media/exam-media/03756/0014700002.png",
-    ],
+    answer: ["C. 0014700002.png"],
   },
   {
     question:
@@ -2235,8 +2240,7 @@ export const data = [
     answer: [
       "A. Permissions associated with the role AROACLKWSDQRAOEXAMPLE:app1",
     ],
-    imageUrl:
-      "https://www.examtopics.com/assets/media/exam-media/03756/0005900001.jpg",
+    imageUrl: img0005900001,
   },
   {
     question:
@@ -2309,8 +2313,7 @@ export const data = [
       "A. Implement retries with exponential backoff",
       "C. Reduce the frequency and/or size of the requests",
     ],
-    imageUrl:
-      "https://www.examtopics.com/assets/media/exam-media/03756/0016900001.png",
+    imageUrl: img0016900001,
   },
   {
     question:
@@ -2600,8 +2603,7 @@ export const data = [
     answer: [
       "A. Add an Export declaration to the Outputs section of the original template and use ImportValue in other templates.",
     ],
-    imageUrl:
-      "https://www.examtopics.com/assets/media/exam-media/03756/0014800001.png",
+    imageUrl: img0014800001,
   },
   {
     question:
@@ -2615,8 +2617,7 @@ export const data = [
     answer: [
       "B. Use aws cloudformation package to upload the source code to an Amazon S3 bucket and produce a modified CloudFormation template.",
     ],
-    imageUrl:
-      "https://www.examtopics.com/assets/media/exam-media/03756/0001000001.png",
+    imageUrl: img0001000001,
   },
   {
     question:

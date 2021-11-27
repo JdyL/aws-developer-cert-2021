@@ -1,7 +1,13 @@
 import React, { useState, useCallback } from "react";
 import "./QuestionAnswer.css";
 import { Button } from "../Button";
-import { getIndexes, letters } from "../../utils";
+import {
+  getIndexes,
+  letters,
+  renderChoice,
+  getMatchingLetter,
+  choiceArrayWithLetter,
+} from "../../utils";
 import { Tick, Cross } from "../../assets";
 import { isEqual } from "lodash";
 
@@ -26,18 +32,7 @@ const QuestionAnswer = ({
     }
     return "";
   };
-  const Choice = useCallback(({ text }) => {
-    if (text.includes("https://www.examtopics.com/assets/")) {
-      return (
-        <img
-          src={text.substring(2)}
-          alt="answer"
-          style={{ width: "20%", height: "auto" }}
-        />
-      );
-    }
-    return text;
-  }, []);
+  const Choice = useCallback(({ text }) => renderChoice(text), []);
   return (
     <div>
       <div style={{ paddingBottom: !showResult ? 30 : 0 }}>
@@ -71,14 +66,15 @@ const QuestionAnswer = ({
       {showResult && (
         <div style={{ color: "grey", padding: "1rem 0" }}>
           You chose:{" "}
-          {getIndexes({ answers: usersAnswer, choices }).map((index) => (
+          {getIndexes({ answers: usersAnswer, choices }).map((ans) => (
             <div
-              key={index}
+              key={ans}
               style={{
-                color: correctAnswer.includes(index) ? "lime" : "red",
+                color: correctAnswer.includes(ans) ? "lime" : "red",
               }}
             >
-              {index}
+              {getMatchingLetter(choiceArrayWithLetter(choices), ans)}
+              {renderChoice(ans)}
             </div>
           ))}
           {usersAnswer?.length < 2 && question.includes("(Select") && (

@@ -20,14 +20,38 @@ export const formatTime = (seconds) => {
 
 export const letters = ["A.", "B.", "C.", "D.", "E."];
 
-export const formatChoiceLetter = (string, index) => {
-  const hasOption = letters.find((letter) => {
-    return string.substring(0, 2) === letter;
-  });
+export const hasChoiceLetter = (text) =>
+  letters.find((letter) => text.substring(0, 2) === letter);
 
-  if (hasOption) {
+export const choiceArrayWithLetter = (choiceArr) => {
+  return choiceArr.map((val, index) => `${letters[index]} ${val}`);
+};
+
+export const formatChoiceLetter = (string, index) => {
+  if (hasChoiceLetter(string)) {
     if (index !== undefined) return letters?.[index] + string.substring(2);
     return string.substring(3);
   }
   return string;
+};
+
+export const renderChoice = (text) => {
+  if (text.includes("data:image")) {
+    const hasLetter = hasChoiceLetter(text);
+    return (
+      <>
+        {hasLetter && text.substring(0, 3)}
+        <img
+          src={hasLetter ? text.substring(2) : text}
+          alt="answer"
+          style={{ width: "20%", height: "auto" }}
+        />
+      </>
+    );
+  }
+  return text;
+};
+
+export const getMatchingLetter = (choices, answer) => {
+  return choices.find((val) => val.includes(answer))?.substring(0, 3);
 };
