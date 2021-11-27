@@ -17,3 +17,15 @@ export const formatTime = (seconds) => {
   const minute = Math.floor(seconds / 60 - hours * 60);
   return `${hours}h ${minute}m ${seconds % 60}s`;
 };
+
+export const formatChoiceLetter = (string, index) => {
+  const letters = ["A.", "B.", "C.", "D."];
+  const hasOption = letters.find((letter) => {
+    return string.substring(0, 2) === letter;
+  });
+
+  if (hasOption) {
+    return `${letters?.[index] + " " || ""}${string.substring(2)}`;
+  }
+  return string;
+};

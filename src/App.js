@@ -6,7 +6,7 @@ import { Results } from "./components/Results";
 import { GetScore } from "./components/GetScore";
 import { shuffle } from "lodash";
 import { Button } from "./components/Button";
-import { formatTime } from "./utils";
+import { formatTime, formatChoiceLetter } from "./utils";
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,7 +23,13 @@ function App() {
 
   const shuffleData = () => {
     setShuffleCount((prevState) => prevState + 1);
-    setData(shuffle(data));
+    const newState = shuffle(data);
+    newState.forEach((val) => {
+      val.choices = shuffle(val.choices).map((choice, index) =>
+        formatChoiceLetter(choice, index)
+      );
+    });
+    setData(newState);
   };
 
   useEffect(() => {
@@ -41,11 +47,19 @@ function App() {
         {!start ? (
           <>
             <h1>Welcome to AWS Developer Associate practice Exam</h1>
-            <p style={{ paddingBottom: 20 }}>
+            <p style={{ paddingTop: 10, paddingBottom: 20, fontWeight: 300 }}>
               I got these question and answers from examtopics + checked the
               discussion for false answers
             </p>
-            <p style={{ paddingBottom: 20 }}>Click start to begin</p>
+            <div
+              style={{
+                marginBottom: 60,
+                marginTop: 30,
+                height: 1,
+                width: "100%",
+                backgroundColor: "grey",
+              }}
+            ></div>
             <Button text="Start" onClick={() => setStart(true)} />
             <Button
               text={`${
