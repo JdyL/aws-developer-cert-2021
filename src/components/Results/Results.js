@@ -4,7 +4,11 @@ import "./Results.css";
 import { isEqual } from "lodash";
 import { Button } from "../Button";
 
-export const Results = ({ data, finalAnswers: originalFinalAnswers }) => {
+export const Results = ({
+  data,
+  finalAnswers: originalFinalAnswers,
+  finalTime,
+}) => {
   const [finalAnswers, setFinalAnswers] = useState(originalFinalAnswers);
   const [filter, setFilter] = useState("Show All");
   const QA = () => {
@@ -64,6 +68,7 @@ export const Results = ({ data, finalAnswers: originalFinalAnswers }) => {
         {Object.entries(filterBtns).map(([key, val]) => {
           return (
             <Button
+              key={key}
               text={key}
               className={`FilterBtn ${filter === key ? "-selected" : ""}`}
               onClick={() => {
@@ -106,6 +111,7 @@ export const Results = ({ data, finalAnswers: originalFinalAnswers }) => {
   };
   return (
     <div className="Results">
+      {finalTime && <p>Time elapsed: {finalTime}</p>}
       <Score />
       <Settings />
       <QA />

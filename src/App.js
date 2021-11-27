@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import "./App.css";
 import { QuestionAnswer } from "./components/QuestionAnswer";
 import { data as originalData } from "./data";
@@ -6,7 +6,8 @@ import { Results } from "./components/Results";
 import { GetScore } from "./components/GetScore";
 import { shuffle, cloneDeep } from "lodash";
 import { Button } from "./components/Button";
-import { formatTime, formatChoiceLetter } from "./utils";
+import { TimerWrapper } from "./components/TimerWrapper";
+import { formatChoiceLetter } from "./utils";
 
 const initialiseData = (data) => {
   const newData = cloneDeep(data);
@@ -23,15 +24,13 @@ function App() {
   const [data, setData] = useState(initialiseData(originalData));
   const [start, setStart] = useState(false);
   const [shuffleCount, setShuffleCount] = useState(0);
-  const [timer, setTimer] = useState(0);
   const currentQuestionData = data[currentIndex];
   const [amountOfQuestions, setAmountOfQuestions] = useState(data.length);
-  const timerInterval = useRef();
   const amountOfQuestionsOptions = [5, 10, 25, 50, 100, data.length];
+  const [finalTime, setFinalTime] = useState();
 
   const isFinished = () => {
     const finished = currentIndex + 1 > data.length;
-    if (finished) clearInterval(timerInterval.current);
     return finished;
   };
 
@@ -46,24 +45,12 @@ function App() {
     setData(newState);
   };
 
-  useEffect(() => {
-    if (start) {
-      timerInterval.current = setInterval(
-        () => setTimer((prevState) => (prevState += 1)),
-        1000
-      );
-    }
-  }, [start]);
-
   return (
     <div
       className="App"
       style={{ alignItems: isFinished() ? "flex-start" : "center" }}
     >
       <div className="Content">
-        {start && !isFinished() && (
-          <div className="Timer">Time elapsed: {formatTime(timer)}</div>
-        )}
         {!start ? (
           <>
             <h1>Welcome to AWS Developer Associate practice Exam</h1>
@@ -71,7 +58,7 @@ function App() {
               I got these question and answers from examtopics + checked the
               discussion for false answers
             </p>
-            <p>
+            <div>
               Questions:{" "}
               <input
                 name="Questions Amount"
@@ -102,7 +89,7 @@ function App() {
                   </button>
                 ))}
               </div>
-            </p>
+            </div>
             <div
               style={{
                 marginBottom: 60,
@@ -133,7 +120,7 @@ function App() {
         ) : (
           <>
             {!isFinished() ? (
-              <>
+              <TimerWrapper timerCallback={setFinalTime}>
                 <QuestionAnswer
                   index={currentIndex + 1}
                   question={currentQuestionData.question}
@@ -163,9 +150,13 @@ function App() {
                     paddingRight: 10,
                   }}
                 >{`${currentIndex + 1}/${data.length}`}</p>
-              </>
+              </TimerWrapper>
             ) : (
-              <Results data={data} finalAnswers={answers} />
+              <Results
+                data={data}
+                finalAnswers={answers}
+                finalTime={finalTime}
+              />
             )}
           </>
         )}
