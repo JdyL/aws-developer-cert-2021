@@ -178,6 +178,8 @@ export const data = [
     answer: [
       "B. Implement an exponential backoff algorithm for optimizing the number of API requests made to Amazon EC2.",
     ],
+    imageUrl:
+      "https://www.examtopics.com/assets/media/exam-media/03756/0014900001.png",
   },
 
   {
@@ -907,6 +909,8 @@ export const data = [
       "A. Contact AWS Support to request an AWS KMS rate limit increase.",
       "B. Perform error retries with exponential backoff in the application code.",
     ],
+    imageUrl:
+      "https://www.examtopics.com/assets/media/exam-media/03756/0010400001.png",
   },
   {
     question:
@@ -1042,6 +1046,8 @@ export const data = [
     answer: [
       "B. Create a global secondary index with a partition key of sport_name and a sort key of score, and get the results",
     ],
+    imageUrl:
+      "https://www.examtopics.com/assets/media/exam-media/03756/0006200001.png",
   },
   {
     question:
@@ -1333,6 +1339,8 @@ export const data = [
       "D. ג€codecommit:*ג€",
     ],
     answer: ["C. ג€codecommit:Update*ג€"],
+    imageUrl:
+      "https://www.examtopics.com/assets/media/exam-media/03756/0009400001.png",
   },
   {
     question:
@@ -1514,6 +1522,8 @@ export const data = [
     answer: [
       "D. The IAM user needs an associated policy with read access to demoman-table.",
     ],
+    imageUrl:
+      "https://www.examtopics.com/assets/media/exam-media/03756/0017600001.jpg",
   },
   {
     question:
@@ -1550,34 +1560,6 @@ export const data = [
       "D. AWS IAM with MFA enabled",
     ],
     answer: ["B. Amazon Cognito with MFA"],
-  },
-  {
-    question:
-      "A server-side application running on Amazon EC2 instances needs access assets contained in an Amazon S3 bucket that have been secured using AWS KMS encryption keys (SSE-KMS). To decrypt the items, the program must have access to the customer master key (CMK).\n\nWhich sequence of actions will provide access to the application? (Select two.)",
-    choices: [
-      "A. Write an S3 bucket policy that grants the bucket access to the key.",
-      "B. Grant access to the key in the IAM EC2 role attached to the applicationג€™s EC2 instances.",
-      "C. Write a key policy that enables IAM policies to grant access to the key.",
-      "D. Grant access to the key in the S3 bucketג€™s ACL",
-      "E. Create a Systems Manager parameter that exposes the KMS key to the EC2 instances.",
-    ],
-    answer: [
-      "A. Write an S3 bucket policy that grants the bucket access to the key.",
-      "E. Create a Systems Manager parameter that exposes the KMS key to the EC2 instances.",
-    ],
-  },
-  {
-    question:
-      "Amazon Cognito is being used by a social networking firm to synchronize profiles across many mobile devices, enabling end users to enjoy a consistent experience.\n\nWhich of the following setups enables customers to be notified quietly whenever an update is ready for their other devices?",
-    choices: [
-      "A. Modify the user pool to include all the devices which keep them in sync.",
-      "B. Use the SyncCallback interface to receive notifications on the application.",
-      "C. Use an Amazon Cognito stream to analyze the data and push the notifications.",
-      "D. Use the push synchronization feature with the appropriate IAM role.",
-    ],
-    answer: [
-      "C. Use an Amazon Cognito stream to analyze the data and push the notifications.",
-    ],
   },
   {
     question:
@@ -1647,32 +1629,6 @@ export const data = [
   },
   {
     question:
-      "The Lambda function below is invoked through an API request made using Amazon API Gateway. The Lambda function typically executes in less than a second.\nThe Lambda function's pseudocode is displayed in the exhibit.\n\n\nWhich two measures may be performed to increase this Lambda function's performance without raising the cost of the solution? (Select two.)",
-    choices: [
-      "A. Package only the modules the Lambda function requires",
-      "B. Use Amazon DynamoDB instead of Amazon RDS",
-      "C. Move the initialization of the variable Amazon RDS connection outside of the handler function",
-      "D. Implement custom database connection pooling with the Lambda function",
-      "E. Implement local caching of Amazon RDS data so Lambda can re-use the cache",
-    ],
-    answer: [
-      "A. Package only the modules the Lambda function requires",
-      "C. Move the initialization of the variable Amazon RDS connection outside of the handler function",
-    ],
-  },
-  {
-    question:
-      "A developer has constructed a huge Lambda function, but deployment encounters the following error:\nClientError: When invoking the CreateFunction action, an error occurred (InvalidParameterValueException): The unzipped file size must not exceed XXXXXXX bytes€TM, where XXXXXXXX is the current Lambda limit.\n\nWhat is the Developer's role in resolving this issue?",
-    choices: [
-      "A. Submit a limit increase request to AWS Support to increase the function to the size needed.",
-      "B. Use a compression algorithm that is more efficient than ZIP.",
-      "C. Break the function into multiple smaller Lambda functions.",
-      "D. ZIP the ZIP file twice to compress it further.",
-    ],
-    answer: ["C. Break the function into multiple smaller Lambda functions."],
-  },
-  {
-    question:
       "A developer wrote configuration requirements for an AWS Elastic Beanstalk application in a file entitled healthcheckurl.yaml in their application source bundle's.ebextensions/directory. The following information is included in the file:\n\nFollowing the application's start, the health check is not executed on the right route, despite the fact that it is legitimate.\n\nHow can this configuration file be corrected?",
     choices: [
       "A. Convert the file to JSON format.",
@@ -1732,73 +1688,72 @@ export const data = [
     ],
     answer: ["B. Amazon Cognito"],
   },
-  [
-    {
-      question:
-        "A business operates a two-tier application that runs on an Amazon EC2 server and manages all of its AWS-based e-commerce operations. During peak periods, the backend servers responsible for processing orders become overburdened with requests. As a consequence, certain orders are unable to be processed. A developer must provide a way for refactoring the program.\n\nWhich initiatives will provide more flexibility during peak periods while staying economically viable? (Select two.)",
-      choices: [
-        "A. Increase the backend T2 EC2 instance sizes to x1 to handle the largest possible load throughout the year.",
-        "B. Implement an Amazon SQS queue to decouple the front-end and backend servers.",
-        "C. Use an Amazon SNS queue to decouple the front-end and backend servers.",
-        "D. Migrate the backend servers to on-premises and pull from an Amazon SNS queue.",
-        "E. Modify the backend servers to pull from an Amazon SQS queue.",
-      ],
-      answer: [
-        "B. Implement an Amazon SQS queue to decouple the front-end and backend servers.",
-        "E. Modify the backend servers to pull from an Amazon SQS queue.",
-      ],
-    },
-    {
-      question:
-        "A developer wishes to protect sensitive configuration data, including passwords, database strings, and application licensing numbers. Access to this sensitive data must be monitored for audit reasons in the future.\n\nWhere, in accordance with security best practices and operational needs, should sensitive information be stored?",
-      choices: [
-        "A. In an encrypted file on the source code bundle; grant the application access with Amazon IAM",
-        "B. In the Amazon EC2 Systems Manager Parameter Store; grant the application access with IAM",
-        "C. On an Amazon EBS encrypted volume; attach the volume to an Amazon EC2 instance to access the data",
-        "D. As an object in an Amazon S3 bucket; grant an Amazon EC2 instance access with an IAM role",
-      ],
-      answer: [
-        "B. In the Amazon EC2 Systems Manager Parameter Store; grant the application access with IAM",
-      ],
-    },
-    {
-      question:
-        "A developer has been requested to modify the source code for an AWS Lambda function. AWS CloudFormation templates are used to administer the function. The template is designed to load the source code from a bucket on Amazon S3. The Developer prepared a.ZIP file deployment package containing the modifications manually and placed it in the appropriate location on Amazon S3. When the function is executed, the modifications to the code are not implemented.\n\nWhat procedure must be followed to ensure that the function is updated to reflect the changes?",
-      choices: [
-        "A. Delete the .ZIP file on S3, and re-upload by using a different object key name.",
-        "B. Update the CloudFormation stack with the correct values for the function code properties S3Bucket, S3Key, or S3ObjectVersion.",
-        "C. Ensure that the function source code is base64-encoded before uploading the deployment package to S3.",
-        "D. Modify the execution role of the Lambda function to allow S3 access permission to the deployment package .ZIP file.",
-      ],
-      answer: [
-        "B. Update the CloudFormation stack with the correct values for the function code properties S3Bucket, S3Key, or S3ObjectVersion.",
-      ],
-    },
-    {
-      question:
-        "A business requires data encryption at rest but wishes to utilize an AWS managed service while maintaining control over its own master key.\n\nWhich of the following Amazon Web Services (AWS) services is appropriate for meeting these requirements?",
-      choices: [
-        "A. SSE with Amazon S3",
-        "B. SSE with AWS KMS",
-        "C. Client-side encryption",
-        "D. AWS IAM roles and policies",
-      ],
-      answer: ["B. SSE with AWS KMS"],
-    },
-    {
-      question:
-        "A developer is creating a distributed application that will be constructed utilizing a microservices architecture and will span numerous Amazon Web Services accounts. The operations team of the business need the ability to examine and troubleshoot application problems from a centralized account.\n\nHow is the developer to adhere to these specifications?",
-      choices: [
-        "A. Use an Amazon X-Ray agent with role assumption to publish data into the centralized account.",
-        "B. Use Amazon X-Ray and create a new IAM user to publish the access keys into the centralized account.",
-        "C. Use VPC Flow Logs to collect applications logs across different accounts.",
-        "D. Enable AWS CloudTrail to publish the trails in an Amazon S3 bucket in the centralized account.",
-      ],
-      answer: [
-        "A. Use an Amazon X-Ray agent with role assumption to publish data into the centralized account.",
-      ],
-    },
-  ],
+
+  {
+    question:
+      "A business operates a two-tier application that runs on an Amazon EC2 server and manages all of its AWS-based e-commerce operations. During peak periods, the backend servers responsible for processing orders become overburdened with requests. As a consequence, certain orders are unable to be processed. A developer must provide a way for refactoring the program.\n\nWhich initiatives will provide more flexibility during peak periods while staying economically viable? (Select two.)",
+    choices: [
+      "A. Increase the backend T2 EC2 instance sizes to x1 to handle the largest possible load throughout the year.",
+      "B. Implement an Amazon SQS queue to decouple the front-end and backend servers.",
+      "C. Use an Amazon SNS queue to decouple the front-end and backend servers.",
+      "D. Migrate the backend servers to on-premises and pull from an Amazon SNS queue.",
+      "E. Modify the backend servers to pull from an Amazon SQS queue.",
+    ],
+    answer: [
+      "B. Implement an Amazon SQS queue to decouple the front-end and backend servers.",
+      "E. Modify the backend servers to pull from an Amazon SQS queue.",
+    ],
+  },
+  {
+    question:
+      "A developer wishes to protect sensitive configuration data, including passwords, database strings, and application licensing numbers. Access to this sensitive data must be monitored for audit reasons in the future.\n\nWhere, in accordance with security best practices and operational needs, should sensitive information be stored?",
+    choices: [
+      "A. In an encrypted file on the source code bundle; grant the application access with Amazon IAM",
+      "B. In the Amazon EC2 Systems Manager Parameter Store; grant the application access with IAM",
+      "C. On an Amazon EBS encrypted volume; attach the volume to an Amazon EC2 instance to access the data",
+      "D. As an object in an Amazon S3 bucket; grant an Amazon EC2 instance access with an IAM role",
+    ],
+    answer: [
+      "B. In the Amazon EC2 Systems Manager Parameter Store; grant the application access with IAM",
+    ],
+  },
+  {
+    question:
+      "A developer has been requested to modify the source code for an AWS Lambda function. AWS CloudFormation templates are used to administer the function. The template is designed to load the source code from a bucket on Amazon S3. The Developer prepared a.ZIP file deployment package containing the modifications manually and placed it in the appropriate location on Amazon S3. When the function is executed, the modifications to the code are not implemented.\n\nWhat procedure must be followed to ensure that the function is updated to reflect the changes?",
+    choices: [
+      "A. Delete the .ZIP file on S3, and re-upload by using a different object key name.",
+      "B. Update the CloudFormation stack with the correct values for the function code properties S3Bucket, S3Key, or S3ObjectVersion.",
+      "C. Ensure that the function source code is base64-encoded before uploading the deployment package to S3.",
+      "D. Modify the execution role of the Lambda function to allow S3 access permission to the deployment package .ZIP file.",
+    ],
+    answer: [
+      "B. Update the CloudFormation stack with the correct values for the function code properties S3Bucket, S3Key, or S3ObjectVersion.",
+    ],
+  },
+  {
+    question:
+      "A business requires data encryption at rest but wishes to utilize an AWS managed service while maintaining control over its own master key.\n\nWhich of the following Amazon Web Services (AWS) services is appropriate for meeting these requirements?",
+    choices: [
+      "A. SSE with Amazon S3",
+      "B. SSE with AWS KMS",
+      "C. Client-side encryption",
+      "D. AWS IAM roles and policies",
+    ],
+    answer: ["B. SSE with AWS KMS"],
+  },
+  {
+    question:
+      "A developer is creating a distributed application that will be constructed utilizing a microservices architecture and will span numerous Amazon Web Services accounts. The operations team of the business need the ability to examine and troubleshoot application problems from a centralized account.\n\nHow is the developer to adhere to these specifications?",
+    choices: [
+      "A. Use an Amazon X-Ray agent with role assumption to publish data into the centralized account.",
+      "B. Use Amazon X-Ray and create a new IAM user to publish the access keys into the centralized account.",
+      "C. Use VPC Flow Logs to collect applications logs across different accounts.",
+      "D. Enable AWS CloudTrail to publish the trails in an Amazon S3 bucket in the centralized account.",
+    ],
+    answer: [
+      "A. Use an Amazon X-Ray agent with role assumption to publish data into the centralized account.",
+    ],
+  },
 
   {
     question:
@@ -2492,7 +2447,6 @@ export const data = [
     ],
     answer: ["A. Amazon S3 and Amazon CloudFront"],
   },
-
   {
     question:
       "Where should the appspec.yml file be stored for AWS CodeDeploy to function properly?",
@@ -2556,7 +2510,6 @@ export const data = [
       "B. Use Amazon Cognito identity pools to assign unique identifiers and provide user access.",
     ],
   },
-
   {
     question:
       "A developer must invoke an AWS Lambda function depending on the lifecycle activity of an item in an Amazon DynamoDB database.\n\nHow does the developer go about developing the solution?",
@@ -2622,7 +2575,6 @@ export const data = [
       "D. Use AWS SSM Parameter Store to store the secrets and to programmatically access them by using the IAM role from EC2 instances.",
     ],
   },
-
   {
     question:
       "A developer is establishing an Auto Scaling group for instances that must submit a custom metric to Amazon CloudWatch.\n\nWhich technique is the SECUREST approach for authenticating a CloudWatch PUT request?",
@@ -2690,7 +2642,6 @@ export const data = [
       "B. Run the output of the following: aws ecr get-login and then run: docker pull REPOSITORY URI : TAG",
     ],
   },
-
   {
     question:
       "A developer is developing a Lambda function and want to use external libraries that are not included in the standard Lambda libraries.\n\nWhich operation would result in the least amount of Lambda compute time being consumed?",
