@@ -24,12 +24,14 @@ h1 {
 }
 
 .QuestionInput {
-  width: 40px;
+  width: 35px;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid white;
   color: white;
   font-size: 1.125rem;
+  text-align: right;
+  padding-right: 5px;
 }
 
 .QuestionBtnContainer {

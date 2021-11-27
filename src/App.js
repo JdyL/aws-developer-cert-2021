@@ -8,7 +8,6 @@ import { shuffle, cloneDeep } from "lodash";
 import { Button } from "./components/Button";
 import { formatTime, formatChoiceLetter } from "./utils";
 
-
 const initialiseData = (data) => {
   const newData = cloneDeep(data);
   newData.forEach((val) => {
@@ -135,35 +134,35 @@ function App() {
           <>
             {!isFinished() ? (
               <>
-              <QuestionAnswer
-                index={currentIndex + 1}
-                question={currentQuestionData.question}
-                choices={currentQuestionData.choices}
+                <QuestionAnswer
+                  index={currentIndex + 1}
+                  question={currentQuestionData.question}
+                  choices={currentQuestionData.choices}
                   questionImage={currentQuestionData?.imageUrl}
-                userAnswer={answers?.[currentIndex]}
-                setAnswer={(ans) => {
-                  setAnswers((prevState) => {
-                    return { ...prevState, [currentIndex]: ans };
-                  });
-                }}
-                clickNext={() =>
-                  setCurrentIndex((prevState) => (prevState += 1))
-                }
-              />
+                  userAnswer={answers?.[currentIndex]}
+                  setAnswer={(ans) => {
+                    setAnswers((prevState) => {
+                      return { ...prevState, [currentIndex]: ans };
+                    });
+                  }}
+                  clickNext={() =>
+                    setCurrentIndex((prevState) => (prevState += 1))
+                  }
+                />
                 <GetScore
                   data={data}
                   finalAnswers={answers}
                   style={{ position: "absolute", top: 0, right: 0 }}
                 />
-            <p
-              style={{
-                position: "absolute",
-                color: "grey",
-                right: 0,
-                bottom: 0,
-                paddingRight: 10,
-              }}
-            >{`${currentIndex + 1}/${data.length}`}</p>
+                <p
+                  style={{
+                    position: "absolute",
+                    color: "grey",
+                    right: 0,
+                    bottom: 0,
+                    paddingRight: 10,
+                  }}
+                >{`${currentIndex + 1}/${data.length}`}</p>
               </>
             ) : (
               <Results data={data} finalAnswers={answers} />
