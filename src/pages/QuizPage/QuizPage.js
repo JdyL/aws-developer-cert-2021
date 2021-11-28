@@ -1,7 +1,10 @@
 import React, { useContext, useEffect } from "react";
-import { QuestionAnswer } from "../../components/QuestionAnswer";
-import { GetScore } from "../../components/GetScore";
-import { TimerWrapper } from "../../components/TimerWrapper";
+import {
+  GetScore,
+  TimerWrapper,
+  QuestionAnswer,
+  Button,
+} from "../../components";
 import { Context } from "../../context";
 import { useNavigate } from "react-router-dom";
 
@@ -15,6 +18,7 @@ export const QuizPage = () => {
     setCurrentIndex,
     data,
     start,
+    reset,
   } = context;
   const currentQuestionData = data[currentIndex];
   const navigate = useNavigate();
@@ -26,12 +30,28 @@ export const QuizPage = () => {
   };
 
   useEffect(() => {
+    window.onbeforeunload = (event) => {
+      const e = event || window.event;
+      // Cancel the event
+      e.preventDefault();
+      if (e) {
+        e.returnValue = ""; // Legacy method for cross browser support
+      }
+      return ""; // Legacy method for cross browser support
+    };
     if (!start) {
       return navigate("/");
     }
+    return () => (window.onbeforeunload = null);
   }, []);
   return (
     <TimerWrapper timerCallback={setFinalTime}>
+      <Button
+        style={{ padding: "2px 10px", backgroundColor: "#eb4034" }}
+        text="Reset"
+        className="absolute left-0 top-7"
+        onClick={reset}
+      />
       <QuestionAnswer
         index={currentIndex + 1}
         question={currentQuestionData.question}

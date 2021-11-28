@@ -8,6 +8,7 @@ export const Results = ({
   data,
   finalAnswers: originalFinalAnswers,
   finalTime,
+  reset,
 }) => {
   const [finalAnswers, setFinalAnswers] = useState(originalFinalAnswers);
   const [filter, setFilter] = useState("Show All");
@@ -29,12 +30,12 @@ export const Results = ({
   };
 
   const filterBtns = {
-    "Show All": {
-      onClick: () => {
-        setFinalAnswers(originalFinalAnswers);
-      },
-    },
     // hide for now
+    // "Show All": {
+    //   onClick: () => {
+    //     setFinalAnswers(originalFinalAnswers);
+    //   },
+    // },
     // "Show Correct": {
     //   style: { backgroundColor: "green" },
     //   onClick: () => {
@@ -115,7 +116,17 @@ export const Results = ({
   };
   return (
     <div className={styles.Results}>
-      {finalTime && <p>Time elapsed: {finalTime}</p>}
+      <div className="flex items-center justify-around">
+        {finalTime && <p>Time elapsed: {finalTime}</p>}
+        {finalTime && (
+          <Button
+            className="my-10 w-50"
+            style={{ padding: "2px 10px", backgroundColor: "#eb4034" }}
+            text="Play again"
+            onClick={reset}
+          />
+        )}
+      </div>
       <Score />
       <Settings />
       <QA />

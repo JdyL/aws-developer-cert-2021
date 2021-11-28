@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Button } from "../../components";
 import { Context } from "../../context";
 import { shuffle } from "lodash";
@@ -17,12 +17,19 @@ export const HomePage = () => {
   const {
     amountOfQuestions,
     setAmountOfQuestions,
+    originalData,
     data,
     amountOfQuestionsOptions,
     setData,
     setShuffleCount,
     shuffleCount,
+    onMountStart,
   } = context;
+
+  useEffect(() => {
+    onMountStart();
+  }, []);
+
   const shuffleData = () => {
     setShuffleCount((prevState) => prevState + 1);
     const newState = shuffle(data);
@@ -55,7 +62,7 @@ export const HomePage = () => {
               setAmountOfQuestions(e.target.value);
           }}
         />
-        / {data.length}
+        / {originalData.length}
         <div className="QuestionBtnContainer">
           {amountOfQuestionsOptions.map((val) => (
             <button
@@ -65,7 +72,7 @@ export const HomePage = () => {
               onClick={() => setAmountOfQuestions(val)}
               key={val}
             >
-              {val === data.length ? "All" : val}
+              {val === originalData.length ? "All" : val}
             </button>
           ))}
         </div>
