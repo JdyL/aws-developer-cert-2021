@@ -13,8 +13,8 @@ const TimerWrapper = ({ children, timerCallback }) => {
       1000
     );
     return () => {
+      clearInterval(timerInterval.current);
       timerCallback(formatTime(timerRef.current));
-      clearInterval(timerInterval);
     };
   }, [timerCallback]);
 

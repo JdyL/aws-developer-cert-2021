@@ -1,15 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import { Layout } from "./components";
+import { HomePage, QuizPage, ResultsPage } from "./pages";
 import reportWebVitals from "./reportWebVitals";
 import { ContextProvider } from "./context";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ContextProvider>
-      <App />
-    </ContextProvider>
+    <BrowserRouter>
+      <ContextProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="quiz" element={<QuizPage />} />
+            <Route path="result" element={<ResultsPage />} />
+          </Route>
+        </Routes>
+      </ContextProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

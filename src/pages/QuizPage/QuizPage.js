@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { QuestionAnswer } from "../../components/QuestionAnswer";
 import { GetScore } from "../../components/GetScore";
 import { TimerWrapper } from "../../components/TimerWrapper";
 import { Context } from "../../context";
+import { useNavigate } from "react-router-dom";
 
 export const QuizPage = () => {
   const context = useContext(Context);
@@ -13,8 +14,22 @@ export const QuizPage = () => {
     setAnswers,
     setCurrentIndex,
     data,
+    start,
   } = context;
   const currentQuestionData = data[currentIndex];
+  const navigate = useNavigate();
+  const handleClickNext = () => {
+    if (currentIndex + 1 < data.length) {
+      return setCurrentIndex((prevState) => (prevState += 1));
+    }
+    return navigate("/result");
+  };
+
+  useEffect(() => {
+    if (!start) {
+      return navigate("/");
+    }
+  }, []);
   return (
     <TimerWrapper timerCallback={setFinalTime}>
       <QuestionAnswer
@@ -28,7 +43,7 @@ export const QuizPage = () => {
             return { ...prevState, [currentIndex]: ans };
           });
         }}
-        clickNext={() => setCurrentIndex((prevState) => (prevState += 1))}
+        clickNext={handleClickNext}
       />
       <GetScore
         data={data}

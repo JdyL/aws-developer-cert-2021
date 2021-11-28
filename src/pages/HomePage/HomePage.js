@@ -3,16 +3,23 @@ import { Button } from "../../components";
 import { Context } from "../../context";
 import { shuffle } from "lodash";
 import { formatChoiceLetter } from "../../utils";
+import { useNavigate } from "react-router-dom";
 
 export const HomePage = () => {
+  const navigate = useNavigate();
   const context = useContext(Context);
+
+  const startQuiz = () => {
+    context.setStart(true);
+    navigate("/quiz");
+  };
+
   const {
     amountOfQuestions,
     setAmountOfQuestions,
     data,
     amountOfQuestionsOptions,
     setData,
-    setStart,
     setShuffleCount,
     shuffleCount,
   } = context;
@@ -67,8 +74,8 @@ export const HomePage = () => {
       <Button
         text="Start"
         onClick={() => {
-          setStart(true);
           setData(data.slice(0, amountOfQuestions));
+          startQuiz();
         }}
       />
       <Button
