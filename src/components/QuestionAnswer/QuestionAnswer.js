@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-import "./QuestionAnswer.css";
 import { Button } from "../Button";
 import {
   getIndexes,
@@ -10,6 +9,8 @@ import {
 } from "../../utils";
 import { Tick, Cross } from "../../assets";
 import { isEqual } from "lodash";
+import styles from "./QuestionAnswer.module.scss";
+import { Image } from "../";
 
 const QuestionAnswer = ({
   index,
@@ -25,10 +26,10 @@ const QuestionAnswer = ({
   const [usersAnswer, setUsersAnswer] = useState(showResult ? userAnswer : []);
   const checkIsAnswer = (val) => {
     if (correctAnswer?.includes(val)) {
-      return "-correct";
+      return styles.Correct;
     }
     if (usersAnswer?.includes(val)) {
-      return "-incorrect";
+      return styles.Incorrect;
     }
     return "";
   };
@@ -36,15 +37,7 @@ const QuestionAnswer = ({
   return (
     <div>
       <div style={{ paddingBottom: !showResult ? 30 : 0 }}>
-        <h1
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            textAlign: "left",
-            fontWeight: 400,
-            justifyContent: "space-between",
-          }}
-        >
+        <h1 className={styles.Question}>
           {`${index}. ${question}`}{" "}
           {showResult &&
             (isEqual(usersAnswer.sort(), correctAnswer.sort()) ? (
@@ -54,31 +47,25 @@ const QuestionAnswer = ({
             ))}
         </h1>
 
-        {questionImage && (
-          <img
-            src={questionImage}
-            alt="Question"
-            style={{ paddingTop: 20, width: "50%", height: "auto" }}
-          />
-        )}
+        {questionImage && <Image src={questionImage} alt="Question" />}
       </div>
 
       {showResult && (
-        <div style={{ color: "grey", padding: "1rem 0" }}>
+        <div className={styles.ChosenAnswer}>
           You chose:{" "}
           {getIndexes({ answers: usersAnswer, choices }).map((ans) => (
             <div
               key={ans}
-              style={{
-                color: correctAnswer.includes(ans) ? "lime" : "red",
-              }}
+              className={`${
+                correctAnswer.includes(ans) ? "text-green-500" : "text-red-500"
+              }`}
             >
               {getMatchingLetter(choiceArrayWithLetter(choices), ans)}
               {renderChoice(ans)}
             </div>
           ))}
           {usersAnswer?.length < 2 && question.includes("(Select") && (
-            <p style={{ color: "red" }}>
+            <p className="text-red-500">
               You needed to select more than one to get this question right!
             </p>
           )}
@@ -87,9 +74,11 @@ const QuestionAnswer = ({
       {choices.map((val, index) => (
         <p
           key={val}
-          className={`choices ${showResult ? checkIsAnswer(val) : ""} ${
-            showResult ? "-no-hover" : ""
-          } ${!showResult && usersAnswer.includes(val) ? "-correct" : ""}`}
+          className={`${styles.Choices} ${
+            showResult ? checkIsAnswer(val) : ""
+          } ${showResult ? styles.NoHover : ""} ${
+            !showResult && usersAnswer.includes(val) ? styles.Correct : ""
+          }`}
           onClick={
             !showResult
               ? () => {
@@ -114,7 +103,7 @@ const QuestionAnswer = ({
       {!showResult && (
         <Button
           text="Next"
-          style={{ marginTop: 40, marginBottom: 20 }}
+          className={styles.NextBtn}
           onClick={() => {
             clickNext();
             setAnswer(usersAnswer);

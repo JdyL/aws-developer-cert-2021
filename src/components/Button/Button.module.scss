@@ -6,17 +6,18 @@
   padding: 20px 50px;
   color: white;
   cursor: pointer;
+  transition: all 0.125s;
+
+  &:hover {
+    filter: brightness(115%);
+  }
 }
 
-.Button:hover {
-  background-color: rgb(7, 53, 202);
-}
-
-.-disabled {
+.Disabled {
   cursor: not-allowed;
   background-color: grey;
-}
 
-.-disabled:hover {
-  background-color: grey;
+  &:hover {
+    background-color: grey;
+  }
 }

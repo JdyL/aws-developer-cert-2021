@@ -29,7 +29,7 @@ export const HomePage = () => {
   return (
     <div>
       <h1>Welcome to AWS Developer Associate practice Exam</h1>
-      <p style={{ paddingTop: 10, paddingBottom: 20, fontWeight: 300 }}>
+      <p className="pt-2 pb-7 font-thin">
         I got these question and answers from examtopics + checked the
         discussion for false answers
       </p>
@@ -63,15 +63,7 @@ export const HomePage = () => {
           ))}
         </div>
       </div>
-      <div
-        style={{
-          marginBottom: 60,
-          marginTop: 30,
-          height: 1,
-          width: "100%",
-          backgroundColor: "grey",
-        }}
-      ></div>
+      <div className="Line"></div>
       <Button
         text="Start"
         onClick={() => {
@@ -81,9 +73,9 @@ export const HomePage = () => {
       />
       <Button
         text={`${shuffleCount ? `Shuffled x${shuffleCount}` : "Shuffle?"}`}
+        className="mt-5"
         style={{
           backgroundColor: "green",
-          marginTop: 20,
         }}
         onClick={shuffleData}
       />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { QuestionAnswer } from "../QuestionAnswer";
-import "./Results.css";
+import styles from "./Results.module.scss";
 import { isEqual } from "lodash";
 import { Button } from "../Button";
 
@@ -13,7 +13,7 @@ export const Results = ({
   const [filter, setFilter] = useState("Show All");
   const QA = () => {
     return Object.values(finalAnswers).map((ans, index) => (
-      <div style={{ paddingBottom: 70 }} key={index}>
+      <div className="pb-16" key={index}>
         <QuestionAnswer
           key={index + 1}
           index={index + 1}
@@ -64,13 +64,15 @@ export const Results = ({
 
   const Settings = () => {
     return (
-      <div className="Settings">
+      <div className={styles.Settings}>
         {Object.entries(filterBtns).map(([key, val]) => {
           return (
             <Button
               key={key}
               text={key}
-              className={`FilterBtn ${filter === key ? "-selected" : ""}`}
+              className={`${styles.FilterBtn} ${
+                filter === key ? styles.Selected : ""
+              }`}
               onClick={() => {
                 setFilter(key);
                 val.onClick();
@@ -96,13 +98,14 @@ export const Results = ({
     return (
       <div>
         <h2
-          style={{ border: "1px solid cyan", padding: 10 }}
+          className="p-4"
+          style={{ border: "1px solid cyan" }}
         >{`You scored: ${score} / ${total} (${percent || 0}%)`}</h2>
         {percent > 72 ? (
-          <p style={{ color: "lime" }}>You passed!</p>
+          <p className="text-green-500">You passed!</p>
         ) : (
           <>
-            <p style={{ color: "red" }}>You need atleast 72% to pass </p>
+            <p className="text-red-500">You need atleast 72% to pass </p>
             You failed :(
           </>
         )}
@@ -110,7 +113,7 @@ export const Results = ({
     );
   };
   return (
-    <div className="Results">
+    <div className={styles.Results}>
       {finalTime && <p>Time elapsed: {finalTime}</p>}
       <Score />
       <Settings />

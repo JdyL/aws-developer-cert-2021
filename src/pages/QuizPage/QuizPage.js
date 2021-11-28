@@ -33,17 +33,9 @@ export const QuizPage = () => {
       <GetScore
         data={data}
         finalAnswers={answers}
-        style={{ position: "absolute", top: 0, right: 0 }}
+        className="absolute top-0 right-0"
       />
-      <p
-        style={{
-          position: "absolute",
-          color: "grey",
-          right: 0,
-          bottom: 0,
-          paddingRight: 10,
-        }}
-      >{`${currentIndex + 1}/${data.length}`}</p>
+      <p className="Marks">{`${currentIndex + 1}/${data.length}`}</p>
     </TimerWrapper>
   );
 };
