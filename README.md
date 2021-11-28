@@ -8,6 +8,7 @@ https://aws-dev-ass.netlify.app/
 
 Todo:
 - use local storage
+- add prompt component for restart
 
 ------
 
