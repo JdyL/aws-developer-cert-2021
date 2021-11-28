@@ -48,7 +48,7 @@ export const QuizPage = () => {
     <TimerWrapper timerCallback={setFinalTime}>
       <Button
         style={{ padding: "2px 10px", backgroundColor: "#eb4034" }}
-        text="Reset"
+        text="Restart"
         className="absolute left-0 top-7"
         onClick={reset}
       />
