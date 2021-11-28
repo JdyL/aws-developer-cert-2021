@@ -19,7 +19,7 @@ export const ResultsPage = () => {
       return ""; // Legacy method for cross browser support
     };
     return () => (window.onbeforeunload = null);
-  }, []);
+  }, [finishQuiz, navigate, start]);
   return (
     <Results
       data={data}

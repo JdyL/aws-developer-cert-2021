@@ -10,7 +10,7 @@ export const Results = ({
   finalTime,
   reset,
 }) => {
-  const [finalAnswers, setFinalAnswers] = useState(originalFinalAnswers);
+  const [finalAnswers] = useState(originalFinalAnswers);
   const [filter, setFilter] = useState("Show All");
   const QA = () => {
     return Object.values(finalAnswers).map((ans, index) => (

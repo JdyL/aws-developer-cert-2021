@@ -28,7 +28,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     onMountStart();
-  }, []);
+  }, [onMountStart]);
 
   const shuffleData = () => {
     setShuffleCount((prevState) => prevState + 1);

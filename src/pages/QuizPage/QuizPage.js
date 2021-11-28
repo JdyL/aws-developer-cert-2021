@@ -45,7 +45,7 @@ export const QuizPage = () => {
       return navigate("/");
     }
     return () => (window.onbeforeunload = null);
-  }, []);
+  }, [navigate, start]);
   return (
     <TimerWrapper timerCallback={setFinalTime}>
       <Button
