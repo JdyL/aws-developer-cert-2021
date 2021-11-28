@@ -34,32 +34,33 @@ export const Results = ({
         setFinalAnswers(originalFinalAnswers);
       },
     },
-    "Show Correct": {
-      style: { backgroundColor: "green" },
-      onClick: () => {
-        setFinalAnswers(
-          Object.entries(originalFinalAnswers).reduce((acc, [key, val]) => {
-            if (isEqual(val, data[key].answer)) {
-              acc[key] = val;
-            }
-            return acc;
-          }, {})
-        );
-      },
-    },
-    "Show Incorrect": {
-      style: { backgroundColor: "red" },
-      onClick: () => {
-        setFinalAnswers(
-          Object.entries(originalFinalAnswers).reduce((acc, [key, val]) => {
-            if (!isEqual(val, data[key].answer)) {
-              acc[key] = val;
-            }
-            return acc;
-          }, {})
-        );
-      },
-    },
+    // hide for now
+    // "Show Correct": {
+    //   style: { backgroundColor: "green" },
+    //   onClick: () => {
+    //     setFinalAnswers(
+    //       Object.entries(originalFinalAnswers).reduce((acc, [key, val]) => {
+    //         if (isEqual(val, data[key].answer)) {
+    //           acc[key] = val;
+    //         }
+    //         return acc;
+    //       }, {})
+    //     );
+    //   },
+    // },
+    // "Show Incorrect": {
+    //   style: { backgroundColor: "red" },
+    //   onClick: () => {
+    //     setFinalAnswers(
+    //       Object.entries(originalFinalAnswers).reduce((acc, [key, val]) => {
+    //         if (!isEqual(val, data[key].answer)) {
+    //           acc[key] = val;
+    //         }
+    //         return acc;
+    //       }, {})
+    //     );
+    //   },
+    // },
   };
 
   const Settings = () => {
