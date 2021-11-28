@@ -1,3 +1,5 @@
+import { cloneDeep } from "lodash";
+
 export const getIndexes = ({ answers, choices }) => {
   const indexes = [];
   choices.forEach((choice) => {
@@ -54,4 +56,13 @@ export const renderChoice = (text) => {
 
 export const getMatchingLetter = (choices, answer) => {
   return choices.find((val) => val.includes(answer))?.substring(0, 3);
+};
+
+export const initialiseData = (data) => {
+  const newData = cloneDeep(data);
+  newData.forEach((val) => {
+    val.choices = val?.choices?.map((choice) => formatChoiceLetter(choice));
+    val.answer = val?.answer?.map((ans) => formatChoiceLetter(ans));
+  });
+  return newData;
 };
