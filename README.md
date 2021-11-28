@@ -7,11 +7,8 @@ The questions are updated as of 27/11/2021
 https://aws-dev-ass.netlify.app/
 
 Todo:
-- use scss and refactor
-- retry btn at end and after start with prompt
 - use local storage
-- remove unused
-- fix that one question with images
+- add prompt component for restart
 
 ------
 
