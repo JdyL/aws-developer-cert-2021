@@ -19,6 +19,7 @@ export const QuizPage = () => {
     data,
     start,
     reset,
+    setFinishQuiz,
   } = context;
   const currentQuestionData = data[currentIndex];
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ export const QuizPage = () => {
     if (currentIndex + 1 < data.length) {
       return setCurrentIndex((prevState) => (prevState += 1));
     }
+    setFinishQuiz(true);
     return navigate("/result");
   };
 

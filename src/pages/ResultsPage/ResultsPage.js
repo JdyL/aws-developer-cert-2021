@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 export const ResultsPage = () => {
   const navigate = useNavigate();
   const context = useContext(Context);
-  const { data, answers, finalTime, start, reset } = context;
+  const { data, answers, finalTime, start, reset, finishQuiz } = context;
   useEffect(() => {
-    if (!start) return navigate("/");
+    if (!start || !finishQuiz) return navigate("/");
     window.onbeforeunload = (event) => {
       const e = event || window.event;
       // Cancel the event

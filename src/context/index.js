@@ -11,6 +11,7 @@ export const ContextProvider = ({ children }) => {
   const [answers, setAnswers] = useState([]);
   const [data, setData] = useState(initialiseData(originalData));
   const [start, setStart] = useState(false);
+  const [finishQuiz, setFinishQuiz] = useState(false);
   const [shuffleCount, setShuffleCount] = useState(0);
   const [amountOfQuestions, setAmountOfQuestions] = useState(data.length);
   const amountOfQuestionsOptions = [5, 10, 25, 50, 100, originalData.length];
@@ -29,6 +30,7 @@ export const ContextProvider = ({ children }) => {
     setShuffleCount(0);
     setFinalTime(0);
     navigate("/");
+    setFinishQuiz(false);
   };
 
   const initialValue = {
@@ -50,6 +52,8 @@ export const ContextProvider = ({ children }) => {
     originalData,
     onMountStart,
     reset,
+    finishQuiz,
+    setFinishQuiz,
   };
 
   return <Context.Provider value={initialValue}>{children}</Context.Provider>;
