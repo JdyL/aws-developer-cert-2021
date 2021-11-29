@@ -10,6 +10,12 @@ Todo:
 - use local storage
 - add prompt component for restart
 
+
+This project uses:
+- React
+- React Router
+- TailwindCSS
+
 ------
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
