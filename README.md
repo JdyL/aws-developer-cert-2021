@@ -4,7 +4,7 @@ The purpose of this project is to aid in studying for the AWS Developer Associat
 
 The questions are updated as of 27/11/2021
 
-https://aws-dev-ass.netlify.app/
+https://aws-developer-cert-2021.pages.dev/
 
 Todo:
 - use local storage
